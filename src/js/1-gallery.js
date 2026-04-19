@@ -64,23 +64,11 @@ const images = [
  },
 ];
 
-// Описаний в документації
+
 import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
+
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
-// const handlerClick = event => {
-    // event.preventDefault();
-    // if (!event.target.classList.contains("gallery-image")) return;
-    // const largeImg = event.target.dataset.source;
-    // const alt = event.target.alt;
-    // const instance = basicLightbox.create(`<img src="${largeImg}" alt="${alt}">`);
-    // instance.show();
-    // sel.SimpleLightbox();
-// 
-// };
-// 
 const sel = document.querySelector("ul.gallery");
 const markup = images
     .map((image) => `<li class ="gallery-item">
@@ -97,7 +85,7 @@ const markup = images
 
 sel.insertAdjacentHTML("beforeend", markup);
 
-const gallery = new SimpleLightbox.default('.gallery-item a', {
+const gallery = new SimpleLightbox('.gallery-item a', {
     captionsData: 'alt',
     captionDelay: 250,
 });
