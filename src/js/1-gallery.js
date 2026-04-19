@@ -85,7 +85,7 @@ const markup = images
 
 sel.insertAdjacentHTML("beforeend", markup);
 
-const gallery = new SimpleLightbox.default('.gallery-item a', {
+const gallery = new SimpleLightbox('.gallery-item a', {
     captionsData: 'alt',
     captionDelay: 250,
 });
