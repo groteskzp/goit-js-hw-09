@@ -6,5 +6,5 @@ import{n as e}from"./assets/rolldown-runtime-DNdEV4Dn.js";/* empty css          
                 alt="${e.description}"
                 />
         </a>
-    </li>`).join(``);i.insertAdjacentHTML(`beforeend`,a),new n.default(`.gallery-item a`,{captionsData:`alt`,captionDelay:250});
+    </li>`).join(``);i.insertAdjacentHTML(`beforeend`,a),new n.default.default(`.gallery-item a`,{captionsData:`alt`,captionDelay:250});
 //# sourceMappingURL=1-gallery.js.map
