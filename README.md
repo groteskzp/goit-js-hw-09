@@ -1,113 +1,64 @@
-# Vanilla App Template
+# GoIT JavaScript Homework 09
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+JavaScript homework for the GoIT course: an image gallery with a lightbox and a feedback form that persists user input in `localStorage`. The project is built with Vite from the vanilla app template.
 
-## Створення репозиторію за шаблоном
+## Live demo
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+- [Homepage](https://groteskzp.github.io/goit-js-hw-09/)
+- [Gallery](https://groteskzp.github.io/goit-js-hw-09/1-gallery.html)
+- [Form](https://groteskzp.github.io/goit-js-hw-09/2-form.html)
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+The homepage is deployed on GitHub Pages and links to the Gallery and Form pages.
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+## Features
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+### Homepage
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+- Header navigation with links to **Gallery** and **Form**.
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+### Image gallery
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+- Builds a gallery of 9 images from a JavaScript array (`preview`, `original`, and `description`).
+- Inserts thumbnail markup into `ul.gallery`: each item is a link to the original image with a preview `img` whose `alt` is the description.
+- Opens the original image in [SimpleLightbox](https://simplelightbox.com/) when a thumbnail is clicked.
+- Shows captions from the image `alt` text with a **250 ms** delay.
+- Lays out thumbnails in a wrapping flex row (three items per row, 24 px gap).
+- Styles the lightbox overlay with a semi-transparent dark background and white close, counter, and navigation controls.
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+### Feedback form
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+- Email field and message textarea (`autocomplete="off"`).
+- On every `input` event, saves `{ email, message }` to `localStorage` under the key `feedback-form-state`.
+- On page load, restores saved values into the form fields.
+- On submit, if either field is empty, shows the alert `Fill please all fields` and does not submit.
+- On successful submit, logs the form data to the console, removes the saved state from `localStorage`, and resets the form.
 
-## Підготовка до роботи
+## Tech stack
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
+- HTML
+- CSS
+- Vanilla JavaScript (ES modules)
+- [Vite](https://vitejs.dev/) — bundler and development server
+- [SimpleLightbox](https://simplelightbox.com/) — image lightbox
+- GitHub Pages and GitHub Actions — production deploy from `main`
 
-## Файли і папки
+## Getting started
 
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
+Requirements: [Node.js](https://nodejs.org/) (LTS) and npm.
 
-## Деплой
-
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
-
-```json
-"build": "vite build --base=/<REPO>/",
+```bash
+git clone https://github.com/groteskzp/goit-js-hw-09.git
+cd goit-js-hw-09
+npm install
+npm run dev
 ```
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+Then open [http://localhost:5173](http://localhost:5173) in the browser. Vite reloads the page when you save changes.
 
-![GitHub Pages settings](./assets/repo-settings.png)
+## Scripts
 
-### Статус деплою
-
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
-
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
-
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
-
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
-
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+| Script | Command | Description |
+| --- | --- | --- |
+| `npm run dev` | `vite` | Start the Vite development server |
+| `npm run build` | `vite build --base=/goit-js-hw-09/` | Build the production bundle for GitHub Pages |
+| `npm run preview` | `vite preview` | Preview the production build locally |
